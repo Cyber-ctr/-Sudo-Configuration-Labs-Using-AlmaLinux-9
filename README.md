@@ -27,5 +27,19 @@ sudo passwd maggie
 Switch to each account to verify creation:
 <img width="644" height="351" alt="VirtualBoxVM_4kWqtZzIEh" src="https://github.com/user-attachments/assets/a0274e87-a2c4-4134-82d5-a1b889258ca0" />
 
+2. Edit the Sudoers File: Open the sudoers file with visudo for safe editing:
+sudo visudo
+<img width="633" height="405" alt="VirtualBoxVM_y4TUrMS2KT" src="https://github.com/user-attachments/assets/42641847-318e-4e00-ab3e-c7047f3582ea" />
+
+3. Enable STORAGE Command Alias:
+* Locate the STORAGE alias in the file.
+* Uncomment the line by removing the # symbol.
+<img width="628" height="396" alt="tLIbOZXWFy" src="https://github.com/user-attachments/assets/5accf9ec-6ef4-4b92-8528-7109d8288a80" />
+
+<img width="639" height="410" alt="3NOIWuIqjr" src="https://github.com/user-attachments/assets/edeeff28-2581-4f97-8c1e-bea032d77801" />
+
+
+
+
 
 
