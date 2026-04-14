@@ -39,6 +39,22 @@ sudo visudo
 <img width="639" height="410" alt="3NOIWuIqjr" src="https://github.com/user-attachments/assets/edeeff28-2581-4f97-8c1e-bea032d77801" />
 
 
+4. Add User Privilege Rules: Append the following rules at the end of the sudoers file:
+lionel ALL=(ALL) ALL
+katelyn ALL=(ALL) /usr/bin/systemctl status sshd
+maggie ALL=(ALL) STORAGE
+
+<img width="637" height="65" alt="7fJHJpwDZ1" src="https://github.com/user-attachments/assets/d4ddd0a1-30ff-47e1-9ec1-bba4d76d40a7" />
+
+Save the file and exit.
+
+5. Verify Lionel's Privileges: Switch to Lionel's account and test commands:
+su - lionel
+sudo su
+exit
+sudo systemctl status sshd
+
+
 
 
 
