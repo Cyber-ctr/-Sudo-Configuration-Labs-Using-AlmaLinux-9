@@ -35,11 +35,13 @@ sudo visudo
 3. Enable STORAGE Command Alias:
 * Locate the STORAGE alias in the file.
 * Uncomment the line by removing the # symbol.
+
 <img width="628" height="396" alt="tLIbOZXWFy" src="https://github.com/user-attachments/assets/5accf9ec-6ef4-4b92-8528-7109d8288a80" />
 <img width="639" height="410" alt="3NOIWuIqjr" src="https://github.com/user-attachments/assets/edeeff28-2581-4f97-8c1e-bea032d77801" />
 
 
 4. Add User Privilege Rules: Append the following rules at the end of the sudoers file:
+
 lionel ALL=(ALL) ALL
 katelyn ALL=(ALL) /usr/bin/systemctl status sshd
 maggie ALL=(ALL) STORAGE
@@ -49,6 +51,7 @@ maggie ALL=(ALL) STORAGE
 Save the file and exit.
 
 5. Verify Lionel's Privileges: Switch to Lionel's account and test commands:
+
 su - lionel
 sudo su
 exit
