@@ -62,7 +62,8 @@ exit
 
 sudo systemctl status sshd
 
-<img width="801" height="546" alt="sshd_lionel" src="https://github.com/user-attachments/assets/72db65c3-173a-4596-902d-6d88715d3f0a" />
+<img width="884" height="561" alt="image" src="https://github.com/user-attachments/assets/8363e31c-87f8-4488-9e31-636db07bd56e" />
+
 
 sudo fdisk -l
 exit
