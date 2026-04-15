@@ -64,9 +64,27 @@ sudo systemctl status sshd
 
 <img width="884" height="561" alt="image" src="https://github.com/user-attachments/assets/8363e31c-87f8-4488-9e31-636db07bd56e" />
 
+6. Verify Katelyn's Privileges: Switch to Katelyn's account and test commands:
+   su - katelyn
+   
+   sudo su
+   
+   sudo systemctl status sshd
+   <img width="902" height="493" alt="image" src="https://github.com/user-attachments/assets/ddf6d184-4e93-4271-83fc-683662b3bdf8" />
 
-sudo fdisk -l
-exit
+   sudo systemctl restart sshd
+
+   sudo fdisk -l
+
+   exit
+
+  <img width="1073" height="165" alt="image" src="https://github.com/user-attachments/assets/7b416dd4-1dfc-4680-985f-ee207744394e" />
+
+
+ 7. Verify Maggie's Privileges: Switch to Maggie's account and test commands:
+    <img width="975" height="616" alt="image" src="https://github.com/user-attachments/assets/cd482b7f-3149-46cc-94b9-ab997f18cbd7" />
+
+
 
 
 
