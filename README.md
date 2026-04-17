@@ -85,6 +85,99 @@ sudo systemctl status sshd
     <img width="975" height="616" alt="image" src="https://github.com/user-attachments/assets/cd482b7f-3149-46cc-94b9-ab997f18cbd7" />
 
 
+# Lab 2: Disabling the Sudo Timer
+# Objective
+Configure and disable the sudo password timeout (sudo timer) on AlmaLinux 9 to enhance security by requiring password entry for every sudo command, both globally and for specific users.
+
+# Steps
+Add User to Sudo Group: Add your user account to the wheel group to grant sudo access:
+
+usermod -aG wheel taptue
+Add Sudo Group
+
+Test sudo commands:
+
+sudo fdisk -l
+fdisk Own
+
+sudo systemctl status sshd
+sshd own
+
+sudo iptables -L
+iptables own
+
+Reset Sudo Timer: Run a sudo command, then reset the timer:
+
+sudo fdisk -l
+fdisk Own
+
+sudo -k
+sudo fdisk -l
+fdisk Reset
+
+Edit Sudoers File: Open visudo and search for the Defaults section:
+
+sudo visudo
+(Use /Defaults to search within visudo.) Defaults
+
+Disable Global Sudo Timer: In the Defaults section, add or modify the line:
+
+Defaults timestamp_timeout = 0
+Save the file and exit visudo. Timeout
+
+Verify Global Timer Disable: Test commands again; you should be prompted for a password each time:
+
+sudo fdisk -l
+fdisk Pass
+
+sudo systemctl status sshd
+sshd pass
+
+sudo iptables -L
+Iptables pass
+
+Set Timeout for Specific User (Lionel): Modify the Defaults line for Lionel:
+
+Defaults:lionel timestamp_timeout = 0
+Save and exit visudo. Defaults Lionel
+
+Verify User-Specific Behavior:
+
+Run commands from your own account (taptue):
+
+sudo fdisk -l
+sudo systemctl status sshd
+sudo iptables -L
+fdisk Taptue sshd Taptue iptables Taptue
+
+Switch to Lionel's account and run the same commands:
+
+su - lionel
+sudo fdisk -l
+sudo systemctl status sshd
+sudo iptables -L
+exit
+fdisk Lionel sshd Lionel iptables Lionel
+
+Check Sudo Privileges: View your sudo privileges:
+
+sudo -l
+Check sudo privileges
+
+# Key Learnings
+Configuring granular sudo privileges enhances system security by limiting user access.
+Understanding sudoers file syntax and command aliases.
+Managing sudo timer for different security requirements, including global and per-user settings.
+Practical user account management and group assignments in Linux environments.
+Resetting sudo sessions and verifying privilege configurations.
+# Technologies Used
+AlmaLinux 9
+Sudo configuration and visudo
+Systemctl for service management
+User management tools (useradd, passwd, usermod)
+Iptables for firewall management
+This project demonstrates proficiency in Linux system administration, particularly in access control, security configuration, and user privilege management.
+
 
 
 
