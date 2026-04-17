@@ -90,79 +90,63 @@ sudo systemctl status sshd
 Configure and disable the sudo password timeout (sudo timer) on AlmaLinux 9 to enhance security by requiring password entry for every sudo command, both globally and for specific users.
 
 # Steps
-Add User to Sudo Group: Add your user account to the wheel group to grant sudo access:
-
-usermod -aG wheel taptue
-Add Sudo Group
-
-Test sudo commands:
-
+1.	Log in to the same AlmaLinux virtual machine that you used for the previous lab
+This is done by typing the command below in the terminal;
+Su – username
+2.	At your own user account command prompt, run the following:
 sudo fdisk -l
-fdisk Own
-
 sudo systemctl status sshd
-sshd own
+sudo iptables –L
+<img width="892" height="564" alt="image" src="https://github.com/user-attachments/assets/20ff0189-9ebb-4815-a898-b5f8628d89e2" />
 
-sudo iptables -L
-iptables own
-
-Reset Sudo Timer: Run a sudo command, then reset the timer:
-
+3.	At your own user account command prompt, run the following:
 sudo fdisk -l
-fdisk Own
-
 sudo -k
-sudo fdisk -l
-fdisk Reset
+sudo fdisk –l
+ 
+<img width="904" height="576" alt="image" src="https://github.com/user-attachments/assets/687c1cf3-50e6-4d27-9000-5f83c47cdfd6" />
 
-Edit Sudoers File: Open visudo and search for the Defaults section:
 
+4.	Note how the sudo -k command resets your timer, so you will have to enter your password again. Open visudo with the following command:
 sudo visudo
-(Use /Defaults to search within visudo.) Defaults
+The sudo –k command resets the timer, such that at any sudo command being entered, a password is required (Authentication).
 
-Disable Global Sudo Timer: In the Defaults section, add or modify the line:
 
+5.	In the Defaults specification section of the file, add the following line:
 Defaults timestamp_timeout = 0
-Save the file and exit visudo. Timeout
 
-Verify Global Timer Disable: Test commands again; you should be prompted for a password each time:
+<img width="975" height="120" alt="image" src="https://github.com/user-attachments/assets/2748f77c-9ade-4e06-a07e-659813db5470" />
+Save the file and exit visudo.
 
-sudo fdisk -l
-fdisk Pass
+6.	Perform the commands that you performed in step 2. This time, you should see that you have to enter a password every time.
+ 
+<img width="975" height="618" alt="image" src="https://github.com/user-attachments/assets/e5e0411b-ed20-4ddf-a411-77bc8d5350ae" />
 
-sudo systemctl status sshd
-sshd pass
-
-sudo iptables -L
-Iptables pass
-
-Set Timeout for Specific User (Lionel): Modify the Defaults line for Lionel:
-
+ 
+7.	Open visudo and modify the line that you added so that it looks like this, Save the file and exit visudo:
+   
 Defaults:lionel timestamp_timeout = 0
-Save and exit visudo. Defaults Lionel
 
-Verify User-Specific Behavior:
+<img width="881" height="507" alt="image" src="https://github.com/user-attachments/assets/273481b2-ff61-466e-8b12-89f334c770b8" />
 
-Run commands from your own account (taptue):
+ 
+9.	From your own account shell, repeat the commands that you performed in step 2. Then, log in as Lionel and perform the commands again.
 
-sudo fdisk -l
-sudo systemctl status sshd
-sudo iptables -L
-fdisk Taptue sshd Taptue iptables Taptue
+<img width="975" height="609" alt="image" src="https://github.com/user-attachments/assets/5dae58d5-f531-47af-b88b-72e9853daf67" />
 
-Switch to Lionel's account and run the same commands:
+ 
+From the above, we see that when we type in the first command, the system prompts us to input our password after which it doesn’t require authentication for the other commands.
 
-su - lionel
-sudo fdisk -l
-sudo systemctl status sshd
-sudo iptables -L
-exit
-fdisk Lionel sshd Lionel iptables Lionel
+ <img width="1030" height="651" alt="image" src="https://github.com/user-attachments/assets/74bf5750-3b3c-4348-8ab2-1cf34aa0940a" />
 
-Check Sudo Privileges: View your sudo privileges:
+From the above we can see that when switched to user lionel, everytime, we type any of the commands in step 2 above, we are prompted by the system to input a password.
+9.	View your own sudo privileges by running the following:
 
-sudo -l
-Check sudo privileges
+sudo –l
+
+<img width="975" height="212" alt="image" src="https://github.com/user-attachments/assets/c26c13ff-ac82-4f2a-bc28-3799849987f4" />
+ 
+
 
 # Key Learnings
 Configuring granular sudo privileges enhances system security by limiting user access.
